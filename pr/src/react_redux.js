@@ -11,8 +11,13 @@ export function counter(state,action){
     }
 }
 
-export function addGUN(){
+export function addGun(){
     return {
         type:"加抢"
+    }
+}
+export function removeGun(){
+    return {
+        type:"减抢"
     }
 }

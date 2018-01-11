@@ -13,12 +13,12 @@ import App from './app';
 import {createStore} from 'redux';
  
 import {counter} from './react_redux';
+import {addGun,removeGun} from './react_redux';
 
-import { connect } from 'react-redux';
 const store = createStore(counter);
-const VisibleTodoList = connect()(App);
+ 
 function render(){
-    ReactDom.render(<App store={store} />,document.getElementById('root'));
+    ReactDom.render(<App store={store} add={addGun} remove={removeGun} />,document.getElementById('root'));
 }
  
 store.subscribe(render);

@@ -11,23 +11,25 @@ const User = mongoose.model('user',new mongoose.Schema({
     user:{type:String,require:true},
     age:{type:Number,require:true}
 }));
-//  新增数据
-User.create({
-    user:'xiaoli',
-    age:18
-},function(err,doc) {
-    if(!err){
-        console.log(doc);
-    }else{
-        console.log(err);
-    }
-});
+// //  新增数据
+// User.create({
+//     user:'xiaoli',
+//     age:18
+// },function(err,doc) {
+//     if(!err){
+//         console.log(doc);
+//     }else{
+//         console.log(err);
+//     }
+// });
 
 //新建app
-
-User.remove({age:18},function(err,doc) {
-    console.log(doc);
-})
+// User.update({'user':'xiaoli'},{'$set':{age:23}},function(err,doc){
+//     console.log();
+// })
+// User.remove({age:18},function(err,doc) {
+//     console.log(doc);
+// })
 
 const app = express();
 

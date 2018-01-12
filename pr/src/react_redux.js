@@ -13,11 +13,19 @@ export function counter(state,action){
 
 export function addGun(){
     return {
-        type:"加抢"
+        type:add_gun
     }
 }
 export function removeGun(){
     return {
-        type:"减抢"
+        type:remove_gun
+    }
+}
+
+export function addGunAsync(){
+    return dispatch=>{
+        setTimeout(()=>{
+            dispatch(addGun())
+        },2000)
     }
 }

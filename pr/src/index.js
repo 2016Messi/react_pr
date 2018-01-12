@@ -1,24 +1,28 @@
-// import {createStore} from 'redux';
 
-// function counter(state,action){
-//     switch(action.type){
-//         case "cat" : return state+1;
-//         case "dog" : return state-1;
-//         default : return 10;
-//     }
-// }
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './app';
-import {createStore} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
  
-import {counter} from './react_redux';
-import {addGun,removeGun} from './react_redux';
+ 
+import  thunk  from 'redux-thunk'
+import {counter, addGun, removeGun, addGunAsync} from './react_redux';
+ 
 
-const store = createStore(counter);
+const reduxDevtools = window.devToolsExtension;
+
+
+const store = createStore(counter,compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension():f=>f
+));
  
 function render(){
-    ReactDom.render(<App store={store} add={addGun} remove={removeGun} />,document.getElementById('root'));
+    ReactDom.render(<App store={store} 
+                         add = {addGun} 
+                         remove = {removeGun}
+                         addGunAsync = {addGunAsync}
+                         />,document.getElementById('root'));
 }
  
 store.subscribe(render);
